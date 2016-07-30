@@ -11,8 +11,8 @@ function loadBooks(){
         url:'/books',
         method: 'GET',
         success: function(data){
-            console.log(data);
             var books = JSON.parse(data);
+
             $.each(books, function(index, book){
                 $('#books').append('' +
                     '<div class="book-item well">' +
@@ -27,6 +27,8 @@ function loadBooks(){
                     '</div>'
                 );
             });
+
+            //DEFINED JQUERY EDIT METHOD FOR DYNAMICLY CREATED DOM ELEMENT
             $(".edit-book").click(function(){
                 var book = $(this).parent(),
                     title = book.find(".title").text(),
@@ -39,6 +41,8 @@ function loadBooks(){
                     .find('#edit-postYear').val(postYear).end()
                     .find('#edit-id').text(id).end();
             });
+
+            //DEFINED JQUERY DELETE METHOD FOR DYNAMICLY CREATED DOM ELEMENT
             $(".delete-book").click(function(){
                 var book = $(this).parent(),
                     id = book.find(".id").text();
@@ -47,10 +51,10 @@ function loadBooks(){
                     url: '/delete-book',
                     method: 'DELETE',
                     data: {id: id},
-                })
-            })
+                });
+            });
         }
-    })
+    });
 }
 
 
@@ -67,20 +71,19 @@ $("#add-book-form").submit(function(){
                 $('#exist-error').text("Book already exist");
             } else {
                 $('#save-success').text("Saved");
-                loadBooks();
             }
-            console.log("SAVED " + saved);
         }
     });
+    loadBooks();
 });
 
 $("#edit-book-form").submit(function(){
     var new_book = $(this).parent(),
         current_id = new_book.find("#edit-id").text(),
-        new_title = new_book.find("#edit-title").text(),
+        new_title = $('#edit_modal').find('#edit-title').val(),
         new_author = new_book.find('#edit-author').val(),
         new_postYear = new_book.find('#edit-postYear').val();
-    console.log("CUR ID " + current_id + new_title);
+
     $.ajax({
         url: '/edit-book',
         method: 'POST',
@@ -89,19 +92,9 @@ $("#edit-book-form").submit(function(){
             new_title: new_title,
             new_author: new_author,
             new_postYear: new_postYear
-        },
-        success: loadBooks()
-    })
-
+        }
+    }).done(loadBooks);
 });
-
-function deleteBook(){
-
-}
-
-function editBook(){
-
-}
 
 $("#add").click(function(){
     clearAddForm();

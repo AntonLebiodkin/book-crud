@@ -33,15 +33,10 @@ app.get('/', function(req, res){
     res.render('index.jade');
 });
 
-app.get('/books', function(req, res){
-    Book.find(function(err, books){
-        res.send(JSON.stringify(books));
-    });
-
-});
+//CREATE
 app.put('/add-book', function(req, res){
-    var title = req.body.title.toLowerCase(),
-        author = req.body.author.toLowerCase(),
+    var title = req.body.title,
+        author = req.body.author,
         postYear = req.body.postYear;
 
     Book.find({
@@ -63,23 +58,33 @@ app.put('/add-book', function(req, res){
     });
 });
 
+//READ
+app.get('/books', function(req, res){
+    Book.find(function(err, books){
+        res.send(JSON.stringify(books));
+    });
+
+});
+
+//UPDATE
 app.post('/edit-book', function(req, res){
-    console.log("EDITING");
     var id = req.body.id,
-        title = req.body.new_title.toLowerCase(),
-        author = req.body.new_author.toLowerCase(),
+        title = req.body.new_title,
+        author = req.body.new_author,
         postYear = req.body.new_postYear;
-    Book.find({_id: id}, function(err, book){
+
+    Book.findOne({ _id: id }, function (err, book){
         book.title = title;
         book.author = author;
         book.postYear = postYear;
         book.save();
-    })
+    });
+    res.send('success');
 });
 
+//DELETE
 app.delete('/delete-book', function(req, res){
     var bookID = req.body.id;
-    console.log("REMOVED");
     Book.find({_id: bookID}).remove().exec();
 });
 
