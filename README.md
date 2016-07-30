@@ -11,7 +11,8 @@ All dependencies given in package.json file
     "jade": "^1.11.0",
     "mongodb": "^2.2.5",
     "mongoose": "^4.5.7"
-    
+```
+
 ## Built With
 
 * jQuery - The Write Less, Do More, JavaScript Library.
