@@ -73,8 +73,7 @@ $("#add-book-form").submit(function(){
                 $('#save-success').text("Saved");
             }
         }
-    });
-    loadBooks();
+    }).done(loadBooks);
 });
 
 $("#edit-book-form").submit(function(){
