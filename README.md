@@ -1,5 +1,5 @@
 # book-crud
-Test task for proffibit.com on Junior JS position
+Test task for proffibit.com Junior JS position
 
 ### Prerequisities
 
