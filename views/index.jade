@@ -1,0 +1,65 @@
+doctype html(lang='en')
+head
+    meta(charset='UTF-8')
+    title Books CRUD
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+    style
+        include styles.css
+body
+    h2#book-header.text-center BOOKS CRUD
+    #books
+        if (books)
+            each book in books
+                div.well
+                    h3.title Title: #{book.title}
+                    h3.author Author: #{book.author}
+                    h3.postYear Post Year: #{book.postYear}
+                    p.id(style="display: none")
+    button#add.btn.btn-lg.btn-primary(type='button', data-toggle='modal', data-target='#add_modal') +
+
+    #add_modal.modal.fade(role='dialog')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    h3.text-center Add book to library
+                .modal-body
+                    form#add-book-form(action="javascript:void(0);")
+                        .form-group
+                            label(for='form-title') Book title:
+                            input#form-title.form-control(type='text', name='title', placeholder='Enter book title', required)
+                        .form-group
+                            label(for='form-author') Book Author:
+                            input#form-author.form-control(type='text', name='author', placeholder='Enter author', required)
+                        .form-group
+                            label(for='form-postYear') Book Post Year:
+                            input#form-postYear.form-control(type='number', name='postYear', required, value=1900, min=0, max=2016)
+                        p#exist-error(style="color: red;")
+                        p#save-success(style="color: green;")
+                        button.btn.btn-danger.add-btn(data-dismiss='modal') Close
+                        button.btn.btn-success.add-btn Add
+
+    #edit_modal.modal.fade(role='dialog')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    h3.text-center Edit book
+                .modal-body
+                    form#edit-book-form(action="javascript:void(0);")
+                        .form-group
+                            label(for='form-title') Book title:
+                            input#edit-title.form-control(type='text', name='title', required)
+                        .form-group
+                            label(for='form-author') Book Author:
+                            input#edit-author.form-control(type='text', name='author', required)
+                        .form-group
+                            label(for='form-postYear') Book Post Year:
+                            input#edit-postYear.form-control(type='number', name='postYear', required, value=1900, min=0, max=2016)
+                        p#edit-id(style="display: none;")
+                        button.btn.btn-danger(data-dismiss='modal') Close
+                        button.btn.btn-success.save-btn Save
+
+
+    script(src='https://code.jquery.com/jquery-1.12.3.min.js', integrity='sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=', crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS', crossorigin='anonymous')
+    script
+        include ../logic/methods.js

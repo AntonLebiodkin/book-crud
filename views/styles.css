@@ -1,0 +1,38 @@
+body {
+    background-color: #ECECEC;
+}
+#book-header {
+    margin-top: 30px;
+}
+.book-item {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+#books button {
+    position: relative;
+    left: 10px;
+    top: 10px;
+    margin: 5px;
+}
+
+
+#add {
+    position: fixed;
+    right: 100px;
+    bottom: 70px;
+    border-radius: 100%;
+    width: 85px;
+    height: 85px;
+    font-size: 3em;
+
+}
+
+#books {
+    margin-top: 50px;
+}
+.add-btn {
+    margin: 5px;
+}
