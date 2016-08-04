@@ -5,6 +5,7 @@ Test task for proffibit.com Junior JS position
 ```
     git clone https://github.com/AntonLebiodkin/book-crud/
     cd book-crud
+    npm install
     npm start
 ```
 
