@@ -1,4 +1,4 @@
 var mongoose = require('mongoose');
-var db = 'mongodb://localhost/books';
+var db = 'mongodb://127.0.0.1/books';
 mongoose.connect(db);
 console.log(db + ' connected!');

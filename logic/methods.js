@@ -51,7 +51,7 @@ function loadBooks(){
                     url: '/delete-book',
                     method: 'DELETE',
                     data: {id: id},
-                });
+                }).done(loadBooks());
             });
         }
     });
@@ -72,8 +72,9 @@ $("#add-book-form").submit(function(){
             } else {
                 $('#save-success').text("Saved");
             }
-        }
-    }).done(loadBooks);
+        },
+        async: false
+    }).done(loadBooks());
 });
 
 $("#edit-book-form").submit(function(){
@@ -91,8 +92,9 @@ $("#edit-book-form").submit(function(){
             new_title: new_title,
             new_author: new_author,
             new_postYear: new_postYear
-        }
-    }).done(loadBooks);
+        },
+        async: false
+    }).done(loadBooks());
 });
 
 $("#add").click(function(){
