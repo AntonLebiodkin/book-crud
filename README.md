@@ -1,6 +1,13 @@
 # book-crud
 Test task for proffibit.com Junior JS position
 
+### To start project
+```
+    git clone https://github.com/AntonLebiodkin/book-crud/
+    cd book-crud
+    npm start
+```
+
 ### Prerequisities
 
 All dependencies given in package.json file
