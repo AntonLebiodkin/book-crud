@@ -1,5 +1,5 @@
 # book-crud
-Test task for proffibit.com Junior JS position
+Test task for Junior JS position
 
 ### To start project
 ```
