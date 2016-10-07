@@ -1,5 +1,4 @@
 # book-crud
-Test task for Junior JS position
 
 ### To start project
 ```
